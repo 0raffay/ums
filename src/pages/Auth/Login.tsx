@@ -39,7 +39,7 @@ export default function Login({isAuthenticated} : {isAuthenticated: boolean}) {
     },
   });
 
-  const [userLogin, { data, error, isError, isLoading, isSuccess }] =
+  const [userLogin, { data, isError, isLoading, isSuccess }] =
     useUserLoginMutation();
 
   function onSubmit(values: z.infer<typeof LoginSchema>) {
