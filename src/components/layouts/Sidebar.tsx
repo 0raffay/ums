@@ -3,25 +3,23 @@ import { Link } from "react-router-dom";
 import { Button } from "../ui/Button";
 import { useDispatch } from "react-redux";
 import { logout } from "@/store/slices/authSlice";
+import ROUTES from "@/router/routes";
 
 type SidebarProps = {
   setIsLoggingOut?: any;
 };
 
-
-
 function Sidebar({ setIsLoggingOut }: SidebarProps) {
-
   const [openSubMenu, setOpenSubMenu] = useState("");
 
   const dispatch = useDispatch();
-const handleLogout = () => {
-  setIsLoggingOut(true);
+  const handleLogout = () => {
+    setIsLoggingOut(true);
 
-  setTimeout(() => {
-    dispatch(logout());
-  }, 2000);
-};
+    setTimeout(() => {
+      dispatch(logout());
+    }, 2000);
+  };
 
   const MenuItem = ({
     name,
@@ -104,11 +102,14 @@ const handleLogout = () => {
       >
         <div className="overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800">
           <ul className="space-y-2">
-            <MenuItem name={"Pages"}>
+            <MenuItem name={"User Management"}>
               <SubMenu>
-                <SubMenuItem>Item1</SubMenuItem>
-                <SubMenuItem>Item2</SubMenuItem>
-                <SubMenuItem>Item3</SubMenuItem>
+                <SubMenuItem>
+                  <Link to={ROUTES.user_add}>Add Users</Link>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <Link to={"/user-add"}>List Of Users</Link>
+                </SubMenuItem>
               </SubMenu>
             </MenuItem>
             <MenuItem name={"Settings"}>
@@ -118,7 +119,11 @@ const handleLogout = () => {
                 <SubMenuItem>Setting3</SubMenuItem>
               </SubMenu>
             </MenuItem>
-            <Button onClick={handleLogout} expand={"full"} variant={"destructive"}>
+            <Button
+              onClick={handleLogout}
+              expand={"full"}
+              variant={"destructive"}
+            >
               Logout
             </Button>
           </ul>

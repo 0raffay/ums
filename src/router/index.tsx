@@ -1,6 +1,6 @@
 import { RouteObject, useRoutes, Navigate } from "react-router-dom";
 import ROUTES from "./routes";
-import { Login, Dashboard, Layout, Error } from "@/pages";
+import { Login, Dashboard, Layout, Error, AddUser } from "@/pages";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 
@@ -11,7 +11,7 @@ const RouterComponent = () => {
     {
       index: true,
       path: "/",
-      element: <Navigate to={ROUTES.login} replace />,
+      element: <Navigate to={ROUTES.login} />,
     },
     {
       index: true,
@@ -21,7 +21,13 @@ const RouterComponent = () => {
     {
       path: ROUTES.dashboard,
       element: <Layout isAuthenticated={isLoggedIn} />,
-      children: [{ index: true, element: <Dashboard /> }],
+      children: [
+        { index: true, element: <Dashboard /> },
+        {
+          path: ROUTES.user_add,
+          element: <AddUser />,
+        },
+      ],
     },
     {
       path: "*",

@@ -16,14 +16,10 @@ export default function Layout({
     return <Navigate to={ROUTES.login} replace />;
   }
 
-  // Handle Logout loader
   const [isLoggingOut, setIsLoggingOut] = useState(false);
-
-  // Login Loader
   const [showLoginLoader, setShowLoginLoader] = useState(true);
 
   useEffect(() => {
-    // Simulating login loader
     const loading = setTimeout(() => {
       setShowLoginLoader(false);
     }, 2000);
@@ -45,12 +41,11 @@ export default function Layout({
     );
   }
 
-  // Render the main layout
   return (
-    <div className="antialiased bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen h-full antialiased bg-gray-50 dark:bg-gray-900">
       <Header setIsLoggingOut={setIsLoggingOut} />
       <Sidebar setIsLoggingOut={setIsLoggingOut} />
-      <main className="p-4 md:ml-64 h-auto pt-20 min-h-[100vh]">
+      <main className="grid p-4 md:ml-64 h-auto pt-20 min-h-[100vh]">
         <Outlet />
       </main>
     </div>
