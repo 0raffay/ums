@@ -1,11 +1,7 @@
-import { Login } from "@/pages";
+import RouterComponent from "@/router";
 
 function App() {
-  return (
-    <>
-      <Login />
-    </>
-  );
+  return <RouterComponent />;
 }
 
 export default App;

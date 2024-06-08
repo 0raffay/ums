@@ -22,8 +22,15 @@ import { login } from "@/store/slices/authSlice";
 //api:
 import { useUserLoginMutation } from "@/api/Auth/authApi";
 import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import ROUTES from "@/router/routes";
 
-export default function Login() {
+export default function Login({isAuthenticated} : {isAuthenticated: boolean}) {
+  
+  if (isAuthenticated) {
+    return <Navigate to={ROUTES.dashboard} replace />;
+  }
+
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -131,8 +138,8 @@ export default function Login() {
                 Sign in
               </Button>
               {isError && (
-                <FormDescription className="text-destructive font-[14px] font-bold absolute -bottom-8">
-                  {error?.data?.message}
+                <FormDescription className="text-destructive font-[14px] absolute -bottom-8">
+                  Invalid Credentials. Please enter valid credentials to login.
                 </FormDescription>
               )}
             </div>
