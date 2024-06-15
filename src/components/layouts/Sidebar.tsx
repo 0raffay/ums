@@ -102,13 +102,16 @@ function Sidebar({ setIsLoggingOut }: SidebarProps) {
       >
         <div className="overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800">
           <ul className="space-y-2">
+            <SubMenuItem>
+              <Link to={ROUTES.dashboard}>Dashbaord</Link>
+            </SubMenuItem>
             <MenuItem name={"User Management"}>
               <SubMenu>
                 <SubMenuItem>
                   <Link to={ROUTES.user_add}>Add Users</Link>
                 </SubMenuItem>
                 <SubMenuItem>
-                  <Link to={"/user-add"}>List Of Users</Link>
+                  <Link to={ROUTES.user_list}>List Of Users</Link>
                 </SubMenuItem>
               </SubMenu>
             </MenuItem>

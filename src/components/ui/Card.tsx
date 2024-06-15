@@ -8,8 +8,8 @@ const cardVariants = cva(
   {
     variants: {
       size: {
-        default: " px-4 py-2",
-        large: "px-10 py-10",
+        default: "px-4 py-2",
+        large: "px-4 py-4",
       },
     },
   }

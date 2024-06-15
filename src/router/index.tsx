@@ -1,6 +1,6 @@
 import { RouteObject, useRoutes, Navigate } from "react-router-dom";
 import ROUTES from "./routes";
-import { Login, Dashboard, Layout, Error, AddUser } from "@/pages";
+import { Login, Dashboard, Layout, Error, AddUser, UserList } from "@/pages";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 
@@ -26,6 +26,10 @@ const RouterComponent = () => {
         {
           path: ROUTES.user_add,
           element: <AddUser />,
+        },
+        {
+          path: ROUTES.user_list,
+          element: <UserList />,
         },
       ],
     },

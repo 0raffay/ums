@@ -13,7 +13,13 @@ export const userApi = createApi({
         body: userData,
       }),
     }),
+    fetchUsers: builder.query({
+      query: () => "/users",
+    }),
   }),
 });
 
-export const { useAddUserMutation } = userApi;
+export const { useFetchUsersQuery, useAddUserMutation } = userApi;
+
+export const userSelector = () => userApi.endpoints.fetchUsers.select({});
+
